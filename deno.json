@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "compile": "deno compile --allow-net --allow-env -o dist/main main.ts",
+    "debug": "npx @modelcontextprotocol/inspector"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}
