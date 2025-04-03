@@ -4,9 +4,12 @@
     "jsr:@std/assert@1": "1.0.10",
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "npm:@modelcontextprotocol/sdk@*": "1.8.0_express@5.1.0_zod@3.24.2",
+    "npm:@modelcontextprotocol/sdk@1.8.0": "1.8.0_express@5.1.0_zod@3.24.2",
     "npm:@types/node@*": "22.12.0",
     "npm:commander@*": "12.1.0",
-    "npm:zod@*": "3.24.2"
+    "npm:commander@13.1.0": "13.1.0",
+    "npm:zod@*": "3.24.2",
+    "npm:zod@3.24.2": "3.24.2"
   },
   "jsr": {
     "@std/assert@1.0.10": {
@@ -81,6 +84,9 @@
     },
     "commander@12.1.0": {
       "integrity": "sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA=="
+    },
+    "commander@13.1.0": {
+      "integrity": "sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw=="
     },
     "content-disposition@1.0.0": {
       "integrity": "sha512-Au9nRL8VNUut/XSzbQA38+M78dzP4D+eqg3gfJHMIHHYa3bg067xj1KxMUWj+VULbiZMowKngFFbKczUrNJ1mg==",

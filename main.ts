@@ -1,4 +1,4 @@
-import { program } from "npm:commander";
+import { program } from "npm:commander@13.1.0";
 import { run } from "./mcp/server.ts";
 
 program

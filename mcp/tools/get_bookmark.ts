@@ -1,5 +1,5 @@
-import { z } from "npm:zod";
-import type { CallToolResult } from "npm:@modelcontextprotocol/sdk";
+import { z } from "npm:zod@3.24.2";
+import type { CallToolResult } from "npm:@modelcontextprotocol/sdk@1.8.0";
 
 // Define input schema
 const mcpSchema = {

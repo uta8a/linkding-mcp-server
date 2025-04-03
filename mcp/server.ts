@@ -1,9 +1,12 @@
 import {
   McpServer,
   type ToolCallback,
-} from "npm:@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "npm:@modelcontextprotocol/sdk/server/stdio.js";
-import type { RawZodShape, Transport } from "npm:@modelcontextprotocol/sdk";
+} from "npm:@modelcontextprotocol/sdk@1.8.0/server/mcp.js";
+import { StdioServerTransport } from "npm:@modelcontextprotocol/sdk@1.8.0/server/stdio.js";
+import type {
+  RawZodShape,
+  Transport,
+} from "npm:@modelcontextprotocol/sdk@1.8.0";
 import { create_bookmark } from "./tools/create_bookmark.ts";
 import { archive_bookmark } from "./tools/archive_bookmark.ts";
 import { create_tag } from "./tools/create_tag.ts";
