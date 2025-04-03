@@ -1,4 +1,5 @@
 {
+  "name": "@uta8a/linkding-mcp-server",
   "tasks": {
     "dev": "deno run --watch main.ts",
     "compile": "deno compile --allow-net --allow-env -o dist/main main.ts",
