@@ -3,7 +3,7 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  id: z.number().describe("アーカイブするブックマークのID"),
+  id: z.number().describe("ID of the bookmark to archive"),
 };
 
 const schema = z.object(mcpSchema);
@@ -34,7 +34,7 @@ export const handler = async ({ id }: Schema): CallToolResult => {
       content: [
         {
           type: "text",
-          text: `ブックマーク (ID: ${id}) をアーカイブしました。`,
+          text: `Archived bookmark (ID: ${id}).`,
         },
       ],
       isError: false,
@@ -54,7 +54,7 @@ export const handler = async ({ id }: Schema): CallToolResult => {
 
 export const archive_bookmark = {
   name: "archive_bookmark",
-  description: "指定したIDのブックマークをアーカイブ",
+  description: "Archive a bookmark with the specified ID",
   schema: mcpSchema,
   cb: handler,
 };

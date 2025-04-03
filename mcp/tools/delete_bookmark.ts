@@ -3,7 +3,7 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  id: z.number().describe("削除するブックマークのID"),
+  id: z.number().describe("ID of the bookmark to delete"),
 };
 
 const schema = z.object(mcpSchema);
@@ -31,7 +31,7 @@ export const handler = async ({ id }: Schema): CallToolResult => {
       content: [
         {
           type: "text",
-          text: `ブックマーク (ID: ${id}) を削除しました。`,
+          text: `Deleted bookmark (ID: ${id}).`,
         },
       ],
       isError: false,
@@ -51,7 +51,7 @@ export const handler = async ({ id }: Schema): CallToolResult => {
 
 export const delete_bookmark = {
   name: "delete_bookmark",
-  description: "指定したIDのブックマークを削除",
+  description: "Delete a bookmark with the specified ID",
   schema: mcpSchema,
   cb: handler,
 };

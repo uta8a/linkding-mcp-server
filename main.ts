@@ -2,8 +2,8 @@ import { program } from "npm:commander";
 import { run } from "./mcp/server.ts";
 
 program
-  .name("my-cli")
-  .description("My CLI for various tasks")
+  .name("linkding-mcp-server")
+  .description("Linkding MCP server")
   .version("0.1.0");
 program.parse();
 

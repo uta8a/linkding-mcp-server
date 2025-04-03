@@ -3,7 +3,7 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  name: z.string().describe("作成するタグの名前"),
+  name: z.string().describe("Name of the tag to create"),
 };
 
 const schema = z.object(mcpSchema);
@@ -35,9 +35,7 @@ export const handler = async ({ name }: Schema): CallToolResult => {
       content: [
         {
           type: "text",
-          text: `タグ「${name}」を作成しました: ${
-            JSON.stringify(data, null, 2)
-          }`,
+          text: `Created tag "${name}": ${JSON.stringify(data, null, 2)}`,
         },
       ],
       isError: false,
@@ -57,7 +55,7 @@ export const handler = async ({ name }: Schema): CallToolResult => {
 
 export const create_tag = {
   name: "create_tag",
-  description: "リンクディングに新しいタグを作成",
+  description: "Create a new tag in linkding",
   schema: mcpSchema,
   cb: handler,
 };

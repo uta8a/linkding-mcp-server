@@ -3,15 +3,15 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  id: z.number().describe("更新するブックマークのID"),
+  id: z.number().describe("ID of the bookmark to update"),
   url: z.string().optional().describe("linkding bookmark url"),
   title: z.string().optional().describe("linkding bookmark title"),
   description: z.string().optional().describe("linkding bookmark description"),
   notes: z.string().optional().describe("linkding bookmark notes"),
-  is_archived: z.boolean().optional().describe("アーカイブ状態"),
-  unread: z.boolean().optional().describe("未読状態"),
-  shared: z.boolean().optional().describe("共有状態"),
-  tag_names: z.array(z.string()).optional().describe("タグ名の配列"),
+  is_archived: z.boolean().optional().describe("Archive status"),
+  unread: z.boolean().optional().describe("Unread status"),
+  shared: z.boolean().optional().describe("Shared status"),
+  tag_names: z.array(z.string()).optional().describe("Array of tag names"),
 };
 
 const schema = z.object(mcpSchema);
@@ -32,7 +32,7 @@ export const handler = async ({
     const LINKDING_URL = Deno.env.get("LINKDING_URL");
     const LINKDING_API_KEY = Deno.env.get("LINKDING_API_KEY");
 
-    // 更新するデータを準備
+    // Prepare data for update
     const updateData: Record<string, unknown> = {};
     if (url !== undefined) updateData.url = url;
     if (title !== undefined) updateData.title = title;
@@ -62,7 +62,7 @@ export const handler = async ({
       content: [
         {
           type: "text",
-          text: `ブックマーク (ID: ${id}) を更新しました: ${
+          text: `Updated bookmark (ID: ${id}): ${
             JSON.stringify(data, null, 2)
           }`,
         },
@@ -84,7 +84,7 @@ export const handler = async ({
 
 export const update_bookmark = {
   name: "update_bookmark",
-  description: "指定したIDのブックマークを更新",
+  description: "Update a bookmark with the specified ID",
   schema: mcpSchema,
   cb: handler,
 };

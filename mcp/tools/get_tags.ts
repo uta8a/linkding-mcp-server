@@ -3,8 +3,10 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  limit: z.number().optional().describe("結果の最大数（デフォルト100）"),
-  offset: z.number().optional().describe("結果の開始インデックス"),
+  limit: z.number().optional().describe(
+    "Maximum number of results (default 100)",
+  ),
+  offset: z.number().optional().describe("Starting index for results"),
 };
 
 const schema = z.object(mcpSchema);
@@ -15,12 +17,12 @@ export const handler = async ({ limit, offset }: Schema): CallToolResult => {
     const LINKDING_URL = Deno.env.get("LINKDING_URL");
     const LINKDING_API_KEY = Deno.env.get("LINKDING_API_KEY");
 
-    // クエリパラメータを構築
+    // Build query parameters
     const params = new URLSearchParams();
     if (limit) params.append("limit", limit.toString());
     if (offset) params.append("offset", offset.toString());
 
-    // 最終的なURLを構築
+    // Build final URL
     const url = `${LINKDING_URL}/api/tags/${
       params.toString() ? "?" + params.toString() : ""
     }`;
@@ -43,7 +45,7 @@ export const handler = async ({ limit, offset }: Schema): CallToolResult => {
       content: [
         {
           type: "text",
-          text: `タグ一覧を取得しました: ${JSON.stringify(data, null, 2)}`,
+          text: `Retrieved tag list: ${JSON.stringify(data, null, 2)}`,
         },
       ],
       isError: false,
@@ -63,7 +65,7 @@ export const handler = async ({ limit, offset }: Schema): CallToolResult => {
 
 export const get_tags = {
   name: "get_tags",
-  description: "リンクディングのタグ一覧を取得",
+  description: "Get list of tags from linkding",
   schema: mcpSchema,
   cb: handler,
 };

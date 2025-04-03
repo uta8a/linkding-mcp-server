@@ -3,7 +3,7 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  id: z.number().describe("取得するブックマークのID"),
+  id: z.number().describe("ID of the bookmark to retrieve"),
 };
 
 const schema = z.object(mcpSchema);
@@ -32,7 +32,7 @@ export const handler = async ({ id }: Schema): CallToolResult => {
       content: [
         {
           type: "text",
-          text: `ブックマーク (ID: ${id}) を取得しました: ${
+          text: `Retrieved bookmark (ID: ${id}): ${
             JSON.stringify(data, null, 2)
           }`,
         },
@@ -54,7 +54,7 @@ export const handler = async ({ id }: Schema): CallToolResult => {
 
 export const get_bookmark = {
   name: "get_bookmark",
-  description: "IDを指定して特定のブックマークを取得",
+  description: "Retrieve a specific bookmark by ID",
   schema: mcpSchema,
   cb: handler,
 };

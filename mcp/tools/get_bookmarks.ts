@@ -3,11 +3,13 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  q: z.string().optional().describe("検索フレーズ"),
-  limit: z.number().optional().describe("結果の最大数（デフォルト100）"),
-  offset: z.number().optional().describe("結果の開始インデックス"),
+  q: z.string().optional().describe("Search phrase"),
+  limit: z.number().optional().describe(
+    "Maximum number of results (default 100)",
+  ),
+  offset: z.number().optional().describe("Starting index for results"),
   archived: z.boolean().optional().describe(
-    "trueの場合、アーカイブされたブックマークを取得",
+    "If true, retrieves archived bookmarks",
   ),
 };
 
@@ -21,19 +23,19 @@ export const handler = async (
     const LINKDING_URL = Deno.env.get("LINKDING_URL");
     const LINKDING_API_KEY = Deno.env.get("LINKDING_API_KEY");
 
-    // APIエンドポイントを構築
+    // Build API endpoint
     let endpoint = `${LINKDING_URL}/api/bookmarks/`;
     if (archived) {
       endpoint = `${LINKDING_URL}/api/bookmarks/archived/`;
     }
 
-    // クエリパラメータを構築
+    // Build query parameters
     const params = new URLSearchParams();
     if (q) params.append("q", q);
     if (limit) params.append("limit", limit.toString());
     if (offset) params.append("offset", offset.toString());
 
-    // 最終的なURLを構築
+    // Build final URL
     const url = `${endpoint}${
       params.toString() ? "?" + params.toString() : ""
     }`;
@@ -56,9 +58,7 @@ export const handler = async (
       content: [
         {
           type: "text",
-          text: `ブックマーク一覧を取得しました: ${
-            JSON.stringify(data, null, 2)
-          }`,
+          text: `Retrieved bookmark list: ${JSON.stringify(data, null, 2)}`,
         },
       ],
       isError: false,
@@ -78,7 +78,7 @@ export const handler = async (
 
 export const get_bookmarks = {
   name: "get_bookmarks",
-  description: "linkdingのブックマーク一覧を取得",
+  description: "Get list of bookmarks from linkding",
   schema: mcpSchema,
   cb: handler,
 };

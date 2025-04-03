@@ -3,7 +3,7 @@ import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
 const mcpSchema = {
-  url: z.string().describe("チェックするURL"),
+  url: z.string().describe("URL to check"),
 };
 
 const schema = z.object(mcpSchema);
@@ -16,7 +16,7 @@ export const handler = async ({
     const LINKDING_URL = Deno.env.get("LINKDING_URL");
     const LINKDING_API_KEY = Deno.env.get("LINKDING_API_KEY");
 
-    // URLをエンコードする
+    // Encode the URL
     const encodedUrl = encodeURIComponent(url);
 
     const response = await fetch(
@@ -37,25 +37,25 @@ export const handler = async ({
 
     const data = await response.json();
 
-    // レスポンスの整形
-    let resultMessage = `URLのチェック結果: ${url}\n`;
+    // Format the response
+    let resultMessage = `URL check result: ${url}\n`;
 
     if (data.bookmark) {
-      resultMessage += "このURLは既にブックマークされています。\n";
-      resultMessage += `ブックマークID: ${data.bookmark.id}\n`;
-      resultMessage += `タイトル: ${data.bookmark.title}\n`;
+      resultMessage += "This URL is already bookmarked.\n";
+      resultMessage += `Bookmark ID: ${data.bookmark.id}\n`;
+      resultMessage += `Title: ${data.bookmark.title}\n`;
     } else {
-      resultMessage += "このURLはまだブックマークされていません。\n";
+      resultMessage += "This URL is not bookmarked yet.\n";
     }
 
     if (data.metadata) {
-      resultMessage += "\nメタデータ:\n";
-      resultMessage += `タイトル: ${data.metadata.title || "なし"}\n`;
-      resultMessage += `説明: ${data.metadata.description || "なし"}\n`;
+      resultMessage += "\nMetadata:\n";
+      resultMessage += `Title: ${data.metadata.title || "None"}\n`;
+      resultMessage += `Description: ${data.metadata.description || "None"}\n`;
     }
 
     if (data.auto_tags && data.auto_tags.length > 0) {
-      resultMessage += "\n自動タグ: " + data.auto_tags.join(", ") + "\n";
+      resultMessage += "\nAuto tags: " + data.auto_tags.join(", ") + "\n";
     }
 
     return {
@@ -66,7 +66,7 @@ export const handler = async ({
         },
         {
           type: "text",
-          text: `詳細結果: ${JSON.stringify(data, null, 2)}`,
+          text: `Detailed result: ${JSON.stringify(data, null, 2)}`,
         },
       ],
       isError: false,
@@ -86,7 +86,7 @@ export const handler = async ({
 
 export const check_bookmark = {
   name: "check_bookmark",
-  description: "指定したURLが既にブックマークされているかを確認する",
+  description: "Check if a specific URL is already bookmarked",
   schema: mcpSchema,
   cb: handler,
 };
