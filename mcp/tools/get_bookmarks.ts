@@ -78,7 +78,7 @@ export const handler = async (
 
 export const get_bookmarks = {
   name: "get_bookmarks",
-  description: "リンクディングのブックマーク一覧を取得",
+  description: "linkdingのブックマーク一覧を取得",
   schema: mcpSchema,
   cb: handler,
 };
