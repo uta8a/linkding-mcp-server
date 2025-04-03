@@ -1,5 +1,4 @@
 import { z } from "npm:zod";
-import { ToolCallback } from "npm:@modelcontextprotocol/sdk/server/mcp.js";
 import { CallToolResult } from "npm:@modelcontextprotocol/sdk";
 
 // Define input schema
