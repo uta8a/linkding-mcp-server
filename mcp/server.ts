@@ -4,7 +4,6 @@ import {
 } from "npm:@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "npm:@modelcontextprotocol/sdk/server/stdio.js";
 import { RawZodShape, Transport } from "npm:@modelcontextprotocol/sdk";
-import { hello } from "./tools/hello.ts";
 import { create_bookmark } from "./tools/create_bookmark.ts";
 import { archive_bookmark } from "./tools/archive_bookmark.ts";
 import { create_tag } from "./tools/create_tag.ts";
@@ -49,7 +48,6 @@ export const run = async () => {
     version: "0.1.0",
   });
   const server = new WrapMcpServer(s);
-  server.registerTool(hello);
   server.registerTool(check_bookmark);
   server.registerTool(create_bookmark);
   server.registerTool(archive_bookmark);
