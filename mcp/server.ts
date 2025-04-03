@@ -5,6 +5,7 @@ import {
 import { StdioServerTransport } from "npm:@modelcontextprotocol/sdk/server/stdio.js";
 import { RawZodShape, Transport } from "npm:@modelcontextprotocol/sdk";
 import { hello } from "./tools/hello.ts";
+import { create_bookmark } from "./tools/create_bookmark.ts";
 
 type Tool<Args extends RawZodShape> = {
   name: string;
@@ -40,5 +41,6 @@ export const run = async () => {
   });
   const server = new WrapMcpServer(s);
   server.registerTool(hello);
+  server.registerTool(create_bookmark);
   await server.connect(new StdioServerTransport());
 };
