@@ -14,6 +14,7 @@ import { get_bookmarks } from "./tools/get_bookmarks.ts";
 import { get_tags } from "./tools/get_tags.ts";
 import { unarchive_bookmark } from "./tools/unarchive_bookmark.ts";
 import { update_bookmark } from "./tools/update_bookmark.ts";
+import { check_bookmark } from "./tools/check_bookmark.ts";
 
 type Tool<Args extends RawZodShape> = {
   name: string;
@@ -49,6 +50,7 @@ export const run = async () => {
   });
   const server = new WrapMcpServer(s);
   server.registerTool(hello);
+  server.registerTool(check_bookmark);
   server.registerTool(create_bookmark);
   server.registerTool(archive_bookmark);
   server.registerTool(create_tag);

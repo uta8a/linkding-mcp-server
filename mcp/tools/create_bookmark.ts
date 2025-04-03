@@ -79,7 +79,7 @@ export const handler = async ({
 
 export const create_bookmark = {
   name: "create_bookmark",
-  description: "Create a bookmark in linkding",
+  description: "linkdingに新しいブックマークを作成",
   schema: mcpSchema,
   cb: handler,
 };
