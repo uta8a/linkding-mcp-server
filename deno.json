@@ -1,5 +1,8 @@
 {
   "name": "@uta8a/linkding-mcp-server",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./main.ts",
   "tasks": {
     "dev": "deno run --watch main.ts",
     "compile": "deno compile --allow-net --allow-env -o dist/main main.ts",
