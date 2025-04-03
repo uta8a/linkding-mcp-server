@@ -6,6 +6,14 @@ import { StdioServerTransport } from "npm:@modelcontextprotocol/sdk/server/stdio
 import { RawZodShape, Transport } from "npm:@modelcontextprotocol/sdk";
 import { hello } from "./tools/hello.ts";
 import { create_bookmark } from "./tools/create_bookmark.ts";
+import { archive_bookmark } from "./tools/archive_bookmark.ts";
+import { create_tag } from "./tools/create_tag.ts";
+import { delete_bookmark } from "./tools/delete_bookmark.ts";
+import { get_bookmark } from "./tools/get_bookmark.ts";
+import { get_bookmarks } from "./tools/get_bookmarks.ts";
+import { get_tags } from "./tools/get_tags.ts";
+import { unarchive_bookmark } from "./tools/unarchive_bookmark.ts";
+import { update_bookmark } from "./tools/update_bookmark.ts";
 
 type Tool<Args extends RawZodShape> = {
   name: string;
@@ -42,5 +50,14 @@ export const run = async () => {
   const server = new WrapMcpServer(s);
   server.registerTool(hello);
   server.registerTool(create_bookmark);
+  server.registerTool(archive_bookmark);
+  server.registerTool(create_tag);
+  server.registerTool(delete_bookmark);
+  server.registerTool(get_bookmark);
+  server.registerTool(get_bookmarks);
+  server.registerTool(get_tags);
+  server.registerTool(unarchive_bookmark);
+  server.registerTool(update_bookmark);
+
   await server.connect(new StdioServerTransport());
 };
