@@ -1,6 +1,7 @@
 # (Unofficial) linkding-mcp-server
 
-MCP server for [linkding](https://linkding.link/), a self-hostable bookmark manager
+MCP server for [linkding](https://linkding.link/), a self-hostable bookmark
+manager
 
 # setup
 
@@ -24,9 +25,11 @@ When configuring the MCP server, use the following:
 }
 ```
 
-`LINKDING_API_KEY` is the API key found in the REST API section at `/settings/integrations`.
+`LINKDING_API_KEY` is the API key found in the REST API section at
+`/settings/integrations`.
 
-or you can use jsr package [@uta8a/linkding-mcp-server](https://jsr.io/@uta8a/linkding-mcp-server).
+or you can use jsr package
+[@uta8a/linkding-mcp-server](https://jsr.io/@uta8a/linkding-mcp-server).
 
 ```json
 "mcpServers": {
