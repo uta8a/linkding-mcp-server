@@ -17,6 +17,7 @@ import { get_tags } from "./tools/get_tags.ts";
 import { unarchive_bookmark } from "./tools/unarchive_bookmark.ts";
 import { update_bookmark } from "./tools/update_bookmark.ts";
 import { check_bookmark } from "./tools/check_bookmark.ts";
+import { add_tag_to_bookmark } from "./tools/add_tag_to_bookmark.ts";
 
 type Tool<Args extends RawZodShape> = {
   name: string;
@@ -61,6 +62,7 @@ export const run = async () => {
   server.registerTool(get_tags);
   server.registerTool(unarchive_bookmark);
   server.registerTool(update_bookmark);
+  server.registerTool(add_tag_to_bookmark);
 
   await server.connect(new StdioServerTransport());
 };
