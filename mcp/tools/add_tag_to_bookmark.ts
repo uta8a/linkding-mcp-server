@@ -16,12 +16,15 @@ export const handler = async ({ id, tag_name }: Schema): CallToolResult => {
     const LINKDING_API_KEY = Deno.env.get("LINKDING_API_KEY");
 
     // Fetch the current bookmark data
-    const bookmarkResponse = await fetch(`${LINKDING_URL}/api/bookmarks/${id}/`, {
-      method: "GET",
-      headers: {
-        Authorization: `Token ${LINKDING_API_KEY}`,
+    const bookmarkResponse = await fetch(
+      `${LINKDING_URL}/api/bookmarks/${id}/`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Token ${LINKDING_API_KEY}`,
+        },
       },
-    });
+    );
 
     if (!bookmarkResponse.ok) {
       const error = await bookmarkResponse.json();
@@ -54,7 +57,9 @@ export const handler = async ({ id, tag_name }: Schema): CallToolResult => {
       content: [
         {
           type: "text",
-          text: `Added tag '${tag_name}' to bookmark (ID: ${id}): ${JSON.stringify(updatedBookmark, null, 2)}`,
+          text: `Added tag '${tag_name}' to bookmark (ID: ${id}): ${
+            JSON.stringify(updatedBookmark, null, 2)
+          }`,
         },
       ],
       isError: false,
